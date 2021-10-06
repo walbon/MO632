@@ -9,12 +9,20 @@ def main():
     args = sys.argv[1:]
 
     jasons = []
+    items = []
+    cpus = dict()
+
     for arg in args:
         if ".json" in arg:
             jasons.append(arg)
+        else:
+            items.append(arg)
 
-    if len(jasons) < 1:
+    if len(jasons) == 0:
         sys.exit()
+
+    if len(items) == 0:
+        items = ['real_time','cpu_time','items_per_second']
 
     jasons_proc = dict()
     all_data = dict()
@@ -22,50 +30,49 @@ def main():
     for f in jasons:
         with open (f,'r') as data:
             content_json = json.loads(data.read())
+        cpus[f] = f"{content_json['context']['num_cpus']}cpus,{content_json['context']['mhz_per_cpu']}MHz"
         content = dict()
         for x in range(len(content_json['benchmarks'])):
             name = content_json['benchmarks'][x]['name']
-            real_time = content_json['benchmarks'][x]['real_time']
-            cpu_time = content_json['benchmarks'][x]['cpu_time']
-            items_per_second = content_json['benchmarks'][x]['items_per_second']
             content[name] = dict()
-            content[name]['real_time'] = real_time
-            content[name]['cpu_time'] = cpu_time
-            content[name]['items_per_second'] = items_per_second
+            for i in items:
+                content[name][i] = content_json['benchmarks'][x][i]
         all_data[f] = content
 
-    Yaxis_real_time = dict()
-    Yaxis_cpu_time = dict()
-    Yaxis_itemspsc = dict()
+    Yaxis = dict()
+    for i in items:
+        Yaxis[i] = dict()
+
     for f in jasons:
-        Yaxis_real_time[f] = []
-        Yaxis_cpu_time[f] = []
-        Yaxis_itemspsc[f] = []
+        for i in items:
+            Yaxis[i][f] = []
+
         for n in sorted(all_data[f].keys()):
-            Yaxis_real_time[f].append(all_data[f][n]['real_time'])
-            Yaxis_cpu_time[f].append(all_data[f][n]['cpu_time'])
-            Yaxis_itemspsc[f].append(all_data[f][n]['items_per_second'])
+            for i in items:
+                Yaxis[i][f].append(all_data[f][n][i])
 
     Xaxis_items = np.arange(0,len(all_data[f]))
 
     # graphs
     colors = ["tab:orange","tab:green","tab:blue","tab:brown","tab:red"]
 
-    fig, axis = plt.subplots(3, sharex=True)
+    if len(items) > 1:
+        fig, axis = plt.subplots(len(items), sharex=True)
+        for i in items:
+            axis[items.index(i)].set_title(i)
+            for n in range(len(jasons)):
+                axis[items.index(i)].plot(Xaxis_items, Yaxis[i][jasons[n]],
+                        color=colors[n],label=f"{jasons[n].split('-')[-1].split('.')[0]}({cpus[jasons[n]]})")
+            legend = axis[0].legend(loc='upper right', shadow=True, fontsize='x-large')
+    else:
+        fig, axis = plt.subplots()
+        for i in items:
+            axis.set_title(i)
+            for n in range(len(jasons)):
+                axis.plot(Xaxis_items, Yaxis[i][jasons[n]], color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
+            legend = axis.legend(loc='upper right', shadow=True, fontsize='x-large')
 
-    axis[0].set_title("Items per second")
-    for n in range(len(jasons)):
-        axis[0].plot(Xaxis_items, Yaxis_itemspsc[jasons[n]], color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
 
-    axis[1].set_title("CPU Time")
-    for n in range(len(jasons)):
-        axis[1].plot(Xaxis_items, Yaxis_cpu_time[jasons[n]], color=colors[n])
-
-    axis[2].set_title("Real Time")
-    for n in range(len(jasons)):
-        axis[2].plot(Xaxis_items, Yaxis_real_time[jasons[n]], color=colors[n])
-
-    legend = axis[0].legend(loc='upper right', shadow=True, fontsize='x-large')
 
 
 
