@@ -32,9 +32,12 @@ def main():
             content_json = json.loads(data.read())
         cpus[f] = f"{content_json['context']['num_cpus']}cpus,{content_json['context']['mhz_per_cpu']}MHz"
         content = dict()
+
+        Xaxis_items = []
         for x in range(len(content_json['benchmarks'])):
             name = content_json['benchmarks'][x]['name']
             content[name] = dict()
+            Xaxis_items.append(content_json['benchmarks'][x]['name'])
             for i in items:
                 content[name][i] = content_json['benchmarks'][x][i]
         all_data[f] = content
@@ -51,7 +54,7 @@ def main():
             for i in items:
                 Yaxis[i][f].append(all_data[f][n][i])
 
-    Xaxis_items = np.arange(0,len(all_data[f]))
+    #Xaxis_items = np.arange(0,len(all_data[f]))
 
     # graphs
     colors = ["tab:orange","tab:green","tab:blue","tab:brown","tab:red"]
@@ -70,11 +73,9 @@ def main():
             axis.set_title(i)
             for n in range(len(jasons)):
                 axis.plot(Xaxis_items, Yaxis[i][jasons[n]], color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
-            legend = axis.legend(loc='upper right', shadow=True, fontsize='x-large')
+                legend = axis.legend(loc='upper right', shadow=True, fontsize='x-large')
 
-
-
-
+    plt.xticks([])
 
     plt.show()
 
