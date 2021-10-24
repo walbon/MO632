@@ -1,8 +1,15 @@
 #!/bin/bash
 
+trap printout SIGINT
+
+function printout(){
+	echo "]}"
+	exit
+}
+
 function get_power(){
 
-        echo -ne " { \"timestamp\": \"$(date +%Y%m%d-%T.%N)\" \
+        echo ", { \"timestamp\": \"$(date +%Y%m%d-%T)\" \
                 $(dbus-send --system --print-reply --dest=org.open_power.OCC.Control \
                 /xyz/openbmc_project/sensors \
                 org.freedesktop.DBus.ObjectManager.GetManagedObjects | \
@@ -12,11 +19,11 @@ function get_power(){
                 sed 's/ *variant *double //g' | \
                 awk 'NR%2{printf "%s \t",$0;next;}1' | sort - | \
 cut -d "/" -f6  | tr -d "\t" | \
-                sed -e "s;\(.*\)\"\ *\([^\ \t]*\);,\"\1\": \2;g") }\n"
+                sed -e "s;\(.*\)\"\ *\([^\ \t]*\);,\"\1\": \2;g") }"
 }
 
-
-while ( true ); 
+echo "{ \"data\" : [ {\"timestamp\": \"$(date +%Y%m%d-%T)\"}"
+while ( true );
 do
         get_power
 
