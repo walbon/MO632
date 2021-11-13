@@ -1,118 +1,39 @@
-SpatialConvolution, 2, 32, 56, 56, 64, 192, 3, 3
 SpatialConvolution, 4, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolution, 8, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolution, 16, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolution, 2, 32, 28, 28, 96, 128, 3, 3
 SpatialConvolution, 4, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolution, 8, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolution, 16, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolution, 2, 32, 28, 28, 16, 32, 5, 5
 SpatialConvolution, 4, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolution, 8, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolution, 16, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolution, 2, 32, 28, 28, 128, 192, 3, 3
 SpatialConvolution, 4, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolution, 8, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolution, 16, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolution, 2, 32, 28, 28, 32, 96, 5, 5
 SpatialConvolution, 4, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolution, 8, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolution, 16, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolution, 2, 32, 14, 14, 96, 204, 3, 3
 SpatialConvolution, 4, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolution, 8, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolution, 16, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolution, 2, 32, 14, 14, 16, 48, 5, 5
 SpatialConvolution, 4, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolution, 8, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolution, 16, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolution, 2, 32, 14, 14, 112, 224, 3, 3
 SpatialConvolution, 4, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolution, 8, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolution, 16, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolution, 2, 32, 14, 14, 24, 64, 5, 5
 SpatialConvolution, 4, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolution, 8, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolution, 16, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolution, 2, 32, 14, 14, 128, 256, 3, 3
 SpatialConvolution, 4, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolution, 8, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolution, 16, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolution, 2, 32, 14, 14, 144, 288, 3, 3
 SpatialConvolution, 4, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolution, 8, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolution, 16, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolution, 2, 32, 14, 14, 32, 64, 5, 5
 SpatialConvolution, 4, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolution, 8, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolution, 16, 32, 14, 14, 32, 64, 5, 5
 SpatialConvolution, 2, 32, 14, 14, 160, 320, 3, 3
 SpatialConvolution, 4, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolution, 8, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolution, 16, 32, 14, 14, 160, 320, 3, 3
 SpatialConvolution, 2, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolution, 4, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolution, 8, 32, 14, 14, 32, 128, 5, 5
 SpatialConvolution, 16, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolution, 2, 32, 7, 7, 160, 320, 3, 3
 SpatialConvolution, 4, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolution, 8, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolution, 16, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolution, 2, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolution, 4, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolution, 8, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolution, 16, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolution, 2, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolution, 4, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolution, 8, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolution, 16, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolution, 2, 128, 128, 128, 3, 96, 11, 11
-SpatialConvolution, 4, 128, 128, 128, 3, 96, 11, 11
-SpatialConvolution, 8, 128, 128, 128, 3, 96, 11, 11
 SpatialConvolution, 16, 128, 128, 128, 3, 96, 11, 11
-SpatialConvolution, 2, 128, 64, 64, 64, 128, 9, 9
 SpatialConvolution, 4, 128, 64, 64, 64, 128, 9, 9
 SpatialConvolution, 8, 128, 64, 64, 64, 128, 9, 9
-SpatialConvolution, 16, 128, 64, 64, 64, 128, 9, 9
-SpatialConvolution, 2, 128, 32, 32, 128, 128, 9, 9
 SpatialConvolution, 4, 128, 32, 32, 128, 128, 9, 9
-SpatialConvolution, 8, 128, 32, 32, 128, 128, 9, 9
 SpatialConvolution, 16, 128, 32, 32, 128, 128, 9, 9
-SpatialConvolution, 2, 128, 16, 16, 128, 128, 7, 7
-SpatialConvolution, 4, 128, 16, 16, 128, 128, 7, 7
-SpatialConvolution, 8, 128, 16, 16, 128, 128, 7, 7
-SpatialConvolution, 16, 128, 16, 16, 128, 128, 7, 7
 SpatialConvolution, 2, 128, 13, 13, 384, 384, 3, 3
-SpatialConvolution, 4, 128, 13, 13, 384, 384, 3, 3
 SpatialConvolution, 8, 128, 13, 13, 384, 384, 3, 3
 SpatialConvolution, 16, 128, 13, 13, 384, 384, 3, 3
 SpatialConvolutionBwdInput, 2, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdInput, 2, 32, 28, 28, 96, 128, 3, 3
 SpatialConvolutionBwdInput, 4, 32, 28, 28, 96, 128, 3, 3
 SpatialConvolutionBwdInput, 8, 32, 28, 28, 96, 128, 3, 3
 SpatialConvolutionBwdInput, 16, 32, 28, 28, 96, 128, 3, 3
 SpatialConvolutionBwdInput, 2, 32, 28, 28, 16, 32, 5, 5
 SpatialConvolutionBwdInput, 4, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 28, 28, 16, 32, 5, 5
 SpatialConvolutionBwdInput, 16, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 28, 28, 128, 192, 3, 3
 SpatialConvolutionBwdInput, 4, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdInput, 2, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdInput, 4, 32, 28, 28, 32, 96, 5, 5
 SpatialConvolutionBwdInput, 8, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdInput, 16, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 14, 14, 96, 204, 3, 3
 SpatialConvolutionBwdInput, 4, 32, 14, 14, 96, 204, 3, 3
 SpatialConvolutionBwdInput, 8, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdInput, 2, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 16, 48, 5, 5
 SpatialConvolutionBwdInput, 16, 32, 14, 14, 16, 48, 5, 5
 SpatialConvolutionBwdInput, 2, 32, 14, 14, 112, 224, 3, 3
 SpatialConvolutionBwdInput, 4, 32, 14, 14, 112, 224, 3, 3
@@ -120,153 +41,6 @@ SpatialConvolutionBwdInput, 8, 32, 14, 14, 112, 224, 3, 3
 SpatialConvolutionBwdInput, 16, 32, 14, 14, 112, 224, 3, 3
 SpatialConvolutionBwdInput, 2, 32, 14, 14, 24, 64, 5, 5
 SpatialConvolutionBwdInput, 4, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 24, 64, 5, 5
 SpatialConvolutionBwdInput, 16, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 128, 256, 3, 3
 SpatialConvolutionBwdInput, 2, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 144, 288, 3, 3
 SpatialConvolutionBwdInput, 2, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 2, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdInput, 4, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdInput, 16, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdInput, 2, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdInput, 4, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdInput, 8, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdInput, 16, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdInput, 2, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdInput, 4, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdInput, 8, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdInput, 16, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 56, 56, 64, 192, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 28, 28, 96, 128, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 28, 28, 16, 32, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 28, 28, 128, 192, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 28, 28, 32, 96, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 96, 204, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 16, 48, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 112, 224, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 24, 64, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 128, 256, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 144, 288, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 32, 64, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 14, 14, 32, 128, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 7, 7, 160, 320, 3, 3
-SpatialConvolutionBwdKernel, 2, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdKernel, 4, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdKernel, 8, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdKernel, 16, 32, 7, 7, 48, 128, 5, 5
-SpatialConvolutionBwdKernel, 2, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdKernel, 4, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdKernel, 8, 32, 7, 7, 192, 384, 3, 3
-SpatialConvolutionBwdKernel, 16, 32, 7, 7, 192, 384, 3, 3
-CuboidConvolution, 2, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolution, 4, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolution, 8, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolution, 16, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolution, 2, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolution, 4, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolution, 8, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolution, 16, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolution, 2, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolution, 4, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolution, 8, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolution, 16, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolution, 2, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolution, 4, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolution, 8, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolution, 16, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 2, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 4, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 8, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 16, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 2, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 4, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 8, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 16, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdInput, 2, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 4, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 8, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 16, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 2, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 4, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 8, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdInput, 16, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 2, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 4, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 8, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 16, 8, 25, 25, 25, 4, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 2, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 4, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 8, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 16, 8, 25, 25, 25, 8, 16, 5, 5, 5
-CuboidConvolutionBwdKernel, 2, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 4, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 8, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 16, 2, 9, 31, 31, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 2, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 4, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 8, 2, 5, 27, 27, 64, 64, 5, 5, 5
-CuboidConvolutionBwdKernel, 16, 2, 5, 27, 27, 64, 64, 5, 5, 5
