@@ -3,30 +3,31 @@
 set -e
 
 FILE_LIST="eigen_List_Of_Tests.txt"
-
-EIGEN="/root/gcc/objdir/tensorflow/bazel-out/*-opt/bin/tensorflow/core/kernels/eigen_benchmark_cpu_test
---benchmark_out_format=json
---benchmark_format=json
---copt='-DEIGEN_ALTIVEC_DISABLE_MMA'
-"
+bin="$(ls ~/tensorflow/bazel-out/*-opt/bin/tensorflow/core/kernels/eigen_benchmark_cpu_test)"
+EIGEN="${bin} --benchmark_out_format=json --benchmark_format=json --copt='-DEIGEN_ALTIVEC_DISABLE_MMA'"
 
 cat "${FILE_LIST}" | \
-while read -r line
+while read -r TEST
 do
-	new_dir="results/$( echo ${line} | tr -d " ")"
+	TEST_NAME="$( echo ${TEST} | tr -d " ")"
+	new_dir="results_NoMMA/${TEST_NAME}"
+	N=0
+
+	printf ">> Running ${TEST_NAME} "
+        printf "($(grep -n "$TEST" ${FILE_LIST} | cut -d ":" -f1 )/$(awk 'END{print NR}' ${FILE_LIST})): \n"
+
 	mkdir -p "${new_dir}"
 	pushd "${new_dir}"
-	N=0
-	while [ $N -lt 10 ]
+	while [ $N -lt 100 ]
 	do
 			: Run benchmark turn $N
-			set -x
-			$EIGEN --benchmark_filter="${line}" \
-			--benchmark_out=eigen_benchmark_cpu_test-$(uname -m)_$(hostname	-s)-NoMMA-$N.json
-			set +x
+			printf " $N"
+			$EIGEN --benchmark_filter="${TEST}" \
+				--benchmark_out=eigen_benchmark_cpu_test-$(uname -m)_$(\
+				hostname -s)-${TEST_NAME}-$N.json > /dev/null || printf "ERROR"
 			N=$((N+1))
 	done
 	popd
-	sleep 1m
+	sleep 5s
 done
 
