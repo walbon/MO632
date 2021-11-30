@@ -10,7 +10,6 @@ def main():
 
     jasons = []
     items = []
-    cpus = dict()
 
     for arg in args:
         if ".json" in arg:
@@ -30,7 +29,6 @@ def main():
     for f in jasons:
         with open (f,'r') as data:
             content_json = json.loads(data.read())
-        cpus[f] = f"{content_json['context']['num_cpus']}cpus,{content_json['context']['mhz_per_cpu']}MHz"
         content = dict()
 
         Xaxis_items = []
@@ -62,10 +60,10 @@ def main():
     if len(items) > 1:
         fig, axis = plt.subplots(len(items), sharex=True)
         for i in items:
-            axis[items.index(i)].set_title(i)
+            axis[items.index(i)].set_title(i.replace('_',' '))
             for n in range(len(jasons)):
                 axis[items.index(i)].plot(Xaxis_items, Yaxis[i][jasons[n]],
-                        color=colors[n],label=f"{jasons[n].split('-')[-1].split('.')[0]}({cpus[jasons[n]]})")
+                        color=colors[n],label=f"{jasons[n].split('-')[-1].split('.')[0]}")
             legend = axis[0].legend(loc='upper right', shadow=True, fontsize='x-large')
     else:
         fig, axis = plt.subplots()
