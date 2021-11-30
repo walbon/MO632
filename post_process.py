@@ -186,16 +186,45 @@ print(f"... done. PowerPc sensors collected and each test got the average of usa
 
 
 print(f"Drawing graphs of power")
-y_x86 = [ (PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['cpu_time'] for value in PROCESSED_x86.keys() ]
-y_ppc = [ PROCESSED_x86[value]['pkg_power'] for value in PROCESSED_x86.keys() ]
+y_ppc = [(PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9 for value in PROCESSED_x86.keys() ]
+y_x86 = [ PROCESSED_x86[value]['pkg_power'] for value in PROCESSED_x86.keys() ]
+
+y_ppc_realtime = [ PROCESSED_ppc[value]['real_time'] for value in PROCESSED_x86.keys() ]
+y_x86_realtime = [ PROCESSED_x86[value]['real_time'] for value in PROCESSED_x86.keys() ]
+
+y_ppc_cpu = [ PROCESSED_ppc[value]['cpu_time'] for value in PROCESSED_x86.keys() ]
+y_x86_cpu = [ PROCESSED_x86[value]['cpu_time'] for value in PROCESSED_x86.keys() ]
+
+y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in PROCESSED_x86.keys() ]
+y_ppc_items = [ PROCESSED_ppc[value]['items_per_second'] for value in PROCESSED_x86.keys() ]
+
 x = [ Xx for Xx in PROCESSED_x86.keys() ]
-fig,ax = plt.subplots(1,sharey=True)
-ax.set_title("Comparison of power usage")
-ax.set_ylabel("Total power")
-ax.plot(x,y_x86,color="tab:blue",label="Intel Xeon Platinum")
-ax.plot(x,y_ppc,color="tab:orange", label="IBM Power 10")
+
+fig,ax = plt.subplots(4,sharex=True)
+
+
+ax[0].set_title("Comparison of Power Usage")
+ax[0].set_ylabel("Total Energy(Joules)")
+ax[0].plot(x,y_x86,color="tab:blue",label="Intel Xeon Platinum")
+ax[0].plot(x,y_ppc,color="tab:orange", label="IBM Power 10")
+fig.legend(loc='upper right', shadow=True, fontsize='x-large')
+
+ax[1].set_title("Comparison of CPU Time")
+ax[1].set_ylabel("Total CPU Time")
+ax[1].plot(x,y_x86_cpu,color="tab:blue",label="Intel Xeon Platinum")
+ax[1].plot(x,y_ppc_cpu,color="tab:orange", label="IBM Power 10")
+
+ax[2].set_title("Comparison of Real Time")
+ax[2].set_ylabel("Total Real Time")
+ax[2].plot(x,y_x86_realtime,color="tab:blue",label="Intel Xeon Platinum")
+ax[2].plot(x,y_ppc_realtime,color="tab:orange", label="IBM Power 10")
+
+ax[3].set_title("Comparison of Items per second")
+ax[3].set_ylabel("Total Items per second")
+ax[3].plot(x,y_x86_items,color="tab:blue",label="Intel Xeon Platinum")
+ax[3].plot(x,y_ppc_items,color="tab:orange", label="IBM Power 10")
+
 plt.xticks([])
-ax.legend(loc='upper right', shadow=True, fontsize='x-large')
-plt.grid(True)
+plt.grid(False)
 plt.show()
 
