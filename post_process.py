@@ -192,7 +192,17 @@ for test in RESULTS_x86:
 print(f"... done. PowerPc sensors collected and each test got the average of usage.")
 
 
+print(f"Collect the statistic data of perf records")
+with open("reports_x86","r") as rep:
+    REPORTS_x86 = json.load(rep)
+with open("reports_ppc10","r") as rep:
+    REPORTS_ppc = json.load(rep)
+
+
 print(f"Drawing graphs of power")
+
+colors = { "Intel": "#FF671F", "IBM":"#0f62fe" }
+
 x = [ Xx for Xx in PROCESSED_x86.keys() ]
 
 y_ppc = \
@@ -202,27 +212,35 @@ y_x86 = [ PROCESSED_x86[value]['pkg_power'] for value in x ]
 y_ppc_duration = [ PROCESSED_ppc[value]['real_time']*PROCESSED_ppc[value]['iterations']*1e-9 for value in x]
 y_x86_duration = [ PROCESSED_x86[value]['real_time']*PROCESSED_ppc[value]['iterations']*1e-9 for value in x ]
 
-y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in PROCESSED_x86.keys() ]
-y_ppc_items = [ PROCESSED_ppc[value]['items_per_second'] for value in PROCESSED_x86.keys() ]
+y_ppc_items = [ PROCESSED_ppc[value]['items_per_second'] for value in x ]
+y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in x ]
 
+y_ppc_perf = [ REPORTS_ppc[value]['value'] for value in x ]
+y_x86_perf = [ REPORTS_x86[value]['value'] for value in x ]
 
-fig,ax = plt.subplots(3,sharex=True)
+fig,ax = plt.subplots(4,sharex=True)
 
 ax[0].set_title("Consumption of energy of test set")
 ax[0].set_ylabel("Total Energy(Joules)")
-ax[0].plot(x,y_x86,color="tab:blue",label="Intel Xeon Platinum")
-ax[0].plot(x,y_ppc,color="tab:orange", label="IBM Power 10")
+ax[0].plot(x,y_x86,color=colors['Intel'],label="Intel Xeon Platinum")
+ax[0].plot(x,y_ppc,color=colors['IBM'], label="IBM Power 10")
 fig.legend(loc='upper right', shadow=True, fontsize='x-large')
 
-ax[1].set_title("Duration of test set")
-ax[1].set_ylabel("Seconds")
-ax[1].plot(x,y_x86_duration,color="tab:blue",label="Intel Xeon Platinum")
-ax[1].plot(x,y_ppc_duration,color="tab:orange", label="IBM Power 10")
+ax[1].set_title("MMA Usage")
+ax[1].set_ylabel("%")
+ax[1].bar(x,y_ppc_perf, color=colors['IBM'], width=0.3)
+ax[1].set_ylim(0,100)
+plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
 
-ax[2].set_title("Building of Items per second average")
-ax[2].set_ylabel("Number of items per second")
-ax[2].plot(x,y_x86_items,color="tab:blue",label="Intel Xeon Platinum")
-ax[2].plot(x,y_ppc_items,color="tab:orange", label="IBM Power 10")
+ax[2].set_title("Duration of tests")
+ax[2].set_ylabel("Seconds(s)")
+ax[2].plot(x,y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum")
+ax[2].plot(x,y_ppc_duration,color=colors['Intel'], label="IBM Power 10")
+
+ax[3].set_title("Items per second")
+ax[3].set_ylabel("Number of items per second")
+ax[3].plot(x,y_x86_items,color=colors['IBM'],label="Intel Xeon Platinum")
+ax[3].plot(x,y_ppc_items,color=colors['Intel'], label="IBM Power 10")
 
 
 plt.xticks([])
