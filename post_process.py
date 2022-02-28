@@ -209,8 +209,22 @@ y_ppc = \
 [(PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9*PROCESSED_ppc[value]['iterations'] for value in x ]
 y_x86 = [ PROCESSED_x86[value]['pkg_power'] for value in x ]
 
-y_ppc_duration = [ PROCESSED_ppc[value]['real_time']*PROCESSED_ppc[value]['iterations']*1e-9 for value in x]
-y_x86_duration = [ PROCESSED_x86[value]['real_time']*PROCESSED_ppc[value]['iterations']*1e-9 for value in x ]
+total = 0
+for t in y_ppc:
+    total+=t
+xtotal=0
+for s in y_x86:
+    xtotal+=s
+print(f" PPC {total}, Intel {xtotal}")
+
+
+y_ppc_ = \
+[((PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9*PROCESSED_ppc[value]['iterations'])*100*(256/448)/PROCESSED_x86[value]['pkg_power'] for value in x ]
+print(f"Average of power usage between Ppc/x86: {np.average(y_ppc_)}")
+
+
+y_ppc_duration = [ PROCESSED_ppc[value]['real_time'] for value in x]
+y_x86_duration = [ PROCESSED_x86[value]['real_time'] for value in x ]
 
 y_ppc_items = [ PROCESSED_ppc[value]['items_per_second'] for value in x ]
 y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in x ]
@@ -232,8 +246,8 @@ ax[1].bar(x,y_ppc_perf, color=colors['IBM'], width=0.3)
 ax[1].set_ylim(0,100)
 plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
 
-ax[2].set_title("Duration of tests")
-ax[2].set_ylabel("Seconds(s)")
+ax[2].set_title("Real time average")
+ax[2].set_ylabel("Nanoseconds(ns)")
 ax[2].plot(x,y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum")
 ax[2].plot(x,y_ppc_duration,color=colors['Intel'], label="IBM Power 10")
 

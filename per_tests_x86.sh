@@ -38,16 +38,16 @@ do
 		do
 			[[ "$line" =~ "cores" ]] && \
 				cores="$(echo $line | grep cores |\
-					sed -e "s;\(.*\) Joules.*;\1;g ; s;,;\.;g" )"
+					sed -e "s;\(.*\) Joules.*;\1;g ; " )"
 			[[ "$line" =~ "ram" ]] && \
 				ram="$(echo $line | grep ram   | \
-					sed -e "s;\(.*\) Joules.*;\1;g ; s;,;\.;g" )"
+					sed -e "s;\(.*\) Joules.*;\1;g ; " )"
 			[[ "$line" =~ "pkg" ]] && \
 				pkg="$(echo $line | grep pkg   | \
-					sed -e "s;\(.*\) Joules.*;\1;g ; s;,;\.;g" )"
+					sed -e "s;\(.*\) Joules.*;\1;g ; " )"
 			[[ "$line" =~ "seconds" ]] && \
 				seconds="$(echo $line | grep seconds  | sed -e \
-				"s;\(.*\) seconds time elapsed.*;\1;g ; s;,;\.;g" )"
+				"s;\(.*\) seconds time elapsed.*;\1;g ; " )"
 		done < <(
 		perf stat \
 		-B -r 1 \

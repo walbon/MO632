@@ -55,7 +55,7 @@ def main():
     #Xaxis_items = np.arange(0,len(all_data[f]))
 
     # graphs
-    colors = ["tab:orange","tab:green","tab:blue","tab:brown","tab:red"]
+    colors = ["#FF671F", "#0f62fe", "tab:green", "tab:brown","tab:red"]
 
     if len(items) > 1:
         fig, axis = plt.subplots(len(items), sharex=True)
@@ -70,7 +70,8 @@ def main():
         for i in items:
             axis.set_title(i)
             for n in range(len(jasons)):
-                axis.plot(Xaxis_items, Yaxis[i][jasons[n]], color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
+                axis.plot(Xaxis_items, Yaxis[i][jasons[n]],
+                        color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
                 legend = axis.legend(loc='upper right', shadow=True, fontsize='x-large')
 
     plt.xticks([])
