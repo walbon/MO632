@@ -6,6 +6,7 @@ import numpy as np
 import json
 import datetime
 import os
+import sys
 
 TESTS = dict()
 RESULTS_ppc = dict()
@@ -13,6 +14,14 @@ SENSORS = []
 FOLDER = 'ppc10_round2/results'
 SENSORS_DATA = 'ppc10_round2/jsons_MMA/output-all-power10-r2.json'
 DATA = dict()
+
+base_x = 'pkg_power'
+# capturing the --base parameter
+args = sys.argv[1:]
+args = iter(args)
+for arg in args:
+    if arg == "--base":
+        base_x = next(args)
 
 def scan_benchmarks(folder_root):
     for files in os.scandir(folder_root):
@@ -203,7 +212,12 @@ print(f"Drawing graphs of power")
 
 colors = { "Intel": "#FF671F", "IBM":"#0f62fe" }
 
+# both archs are using the same x values
 x = [ Xx for Xx in PROCESSED_x86.keys() ]
+
+x = sorted( x , key = lambda value : PROCESSED_x86[value][base_x])
+
+print("Drawing graphs with the base as {base_x}")
 
 y_ppc = \
 [(PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9*PROCESSED_ppc[value]['iterations'] for value in x ]
