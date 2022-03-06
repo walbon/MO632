@@ -10,9 +10,13 @@ def main():
 
     jasons = []
     items = []
+    base_x = 'cpu_time'
 
+    args = iter(args)
     for arg in args:
-        if ".json" in arg:
+        if arg == "--base":
+            base_x = next(args)
+        elif ".json" in arg:
             jasons.append(arg)
         else:
             items.append(arg)
@@ -21,7 +25,11 @@ def main():
         sys.exit()
 
     if len(items) == 0:
-        items = ['real_time','cpu_time','items_per_second']
+        items = ['real_time','items_per_second']
+    if not base_x in items:
+        items.append(base_x)
+    if not 'name' in items:
+        items.append('name')
 
     jasons_proc = dict()
     all_data = dict()
@@ -44,18 +52,30 @@ def main():
     for i in items:
         Yaxis[i] = dict()
 
+    once = True
     for f in jasons:
+        Xaxis_items = []
+        count = 1
+
         for i in items:
             Yaxis[i][f] = []
 
-        for n in sorted(all_data[f].keys()):
+        for n in sorted(all_data[f].items(), key = lambda x:all_data[f][x[0]][base_x]):
+            Xaxis_items.append(all_data[f][n[0]][base_x])
+            if once:
+                print(count, all_data[f][n[0]]['name'])
+                count+=1
             for i in items:
-                Yaxis[i][f].append(all_data[f][n][i])
-
-    #Xaxis_items = np.arange(0,len(all_data[f]))
+                Yaxis[i][f].append(all_data[f][n[0]][i])
+        once = False
 
     # graphs
     colors = ["#FF671F", "#0f62fe", "tab:green", "tab:brown","tab:red"]
+
+    # Removing the items that are not valuable to have a graph based on the X values and names of
+    # tests
+    items.remove(base_x)
+    items.remove('name')
 
     if len(items) > 1:
         fig, axis = plt.subplots(len(items), sharex=True)
@@ -74,7 +94,7 @@ def main():
                         color=colors[n],label=jasons[n].split("-")[-1].split(".")[0])
                 legend = axis.legend(loc='upper right', shadow=True, fontsize='x-large')
 
-    plt.xticks([])
+    plt.xticks(Xaxis_items)
 
     plt.show()
 
