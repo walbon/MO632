@@ -23,6 +23,8 @@ for arg in args:
     if arg == "--base":
         base_x = next(args)
 
+print(f"[Sorting the X axis values based on {base_x} of x86]")
+
 def scan_benchmarks(folder_root):
     for files in os.scandir(folder_root):
         if files.is_dir():
@@ -48,7 +50,7 @@ def scan_benchmarks(folder_root):
                     jason['benchmarks'][0]['context']['date_end'] = date_end
                     RESULTS_ppc[bkm].append(jason['benchmarks'][0])
         else:
-            print("out: " + files.name)
+            print(f"out: {files.name}")
 
 
 print(f"Processing the results in : {FOLDER}")
@@ -98,16 +100,16 @@ print(f"..Test that matched {len([ x for x in matched if matched[x] == True ])} 
 print(f"\nStarting to merge the Results of benchmarks with sensors.")
 PROCESSED_ppc = dict()
 for test in RESULTS_ppc:
-    real_time = []
     cpu_time = []
+    real_time = []
     items_per_second = []
     p0_power = []
     p1_power = []
     iterations = []
     size = len(RESULTS_ppc[test])
     for it in RESULTS_ppc[test]:
-        real_time.append(it['real_time'])
         cpu_time.append(it['cpu_time'])
+        real_time.append(it['real_time'])
         items_per_second.append(it['items_per_second'])
         iterations.append(it['iterations'])
         p0 = []
@@ -119,8 +121,8 @@ for test in RESULTS_ppc:
         p1_power.append(np.average(p1))
 
     PROCESSED_ppc[test] = dict()
-    PROCESSED_ppc[test]['real_time'] = np.average(real_time)
     PROCESSED_ppc[test]['cpu_time'] = np.average(cpu_time)
+    PROCESSED_ppc[test]['real_time'] = np.average(real_time)
     PROCESSED_ppc[test]['items_per_second'] = np.average(items_per_second)
     PROCESSED_ppc[test]['p0_power'] = np.average(p0_power)
     PROCESSED_ppc[test]['p1_power'] = np.average(p1_power)
@@ -175,24 +177,24 @@ print(f"...read all sensor data and matched them.")
 print(f"\nStarting to merge the Results of benchmarks with sensors.")
 PROCESSED_x86 = dict()
 for test in RESULTS_x86:
-    real_time = []
     cpu_time = []
+    real_time= []
     items_per_second = []
     pkg_power = []
     duration = []
     iterations= []
     size = len(RESULTS_x86[test])
     for it in RESULTS_x86[test]:
-        real_time.append(it['real_time'])
         cpu_time.append(it['cpu_time'])
+        real_time.append(it['real_time'])
         items_per_second.append(it['items_per_second'])
         pkg_power.append(np.average(it['sensors']['pkg']))
         duration.append(np.average(it['sensors']['duration']))
         iterations.append(it['iterations'])
 
     PROCESSED_x86[test] = dict()
-    PROCESSED_x86[test]['real_time'] = np.average(real_time)
     PROCESSED_x86[test]['cpu_time'] = np.average(cpu_time)
+    PROCESSED_x86[test]['real_time'] = np.average(real_time)
     PROCESSED_x86[test]['items_per_second'] = np.average(items_per_second)
     PROCESSED_x86[test]['pkg_power'] = np.average(pkg_power)
     PROCESSED_x86[test]['duration'] = np.average(duration)
@@ -217,7 +219,7 @@ x = [ Xx for Xx in PROCESSED_x86.keys() ]
 
 x = sorted( x , key = lambda value : PROCESSED_x86[value][base_x])
 
-print("Drawing graphs with the base as {base_x}")
+print(f"Drawing graphs with the base as {base_x}")
 
 y_ppc = \
 [(PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9*PROCESSED_ppc[value]['iterations'] for value in x ]
@@ -237,8 +239,8 @@ y_ppc_ = \
 print(f"Average of power usage between Ppc/x86: {np.average(y_ppc_)}")
 
 
-y_ppc_duration = [ PROCESSED_ppc[value]['real_time'] for value in x]
-y_x86_duration = [ PROCESSED_x86[value]['real_time'] for value in x ]
+y_ppc_duration = [ PROCESSED_ppc[value]['cpu_time'] for value in x]
+y_x86_duration = [ PROCESSED_x86[value]['cpu_time'] for value in x ]
 
 y_ppc_items = [ PROCESSED_ppc[value]['items_per_second'] for value in x ]
 y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in x ]
@@ -247,31 +249,38 @@ y_ppc_perf = [ REPORTS_ppc[value]['value'] for value in x ]
 y_x86_perf = [ REPORTS_x86[value]['value'] for value in x ]
 
 fig,ax = plt.subplots(4,sharex=True)
+fig.subplots_adjust(hspace=.318)
+fig.subplots_adjust(wspace=.2)
+fig.subplots_adjust(bottom=.1)
+fig.subplots_adjust(left=.058)
+fig.subplots_adjust(right=.99)
+fig.subplots_adjust(top=.952)
 
 ax[0].set_title("Consumption of energy of test set")
 ax[0].set_ylabel("Total Energy(Joules)")
-ax[0].plot(x,y_x86,color=colors['Intel'],label="Intel Xeon Platinum")
-ax[0].plot(x,y_ppc,color=colors['IBM'], label="IBM Power 10")
-fig.legend(loc='upper right', shadow=True, fontsize='x-large')
+ax[0].bar([value    for value in range(len(x))],y_x86,color=colors['Intel'],label="Intel Xeon Platinum", width=0.3)
+ax[0].bar([value+.3 for value in range(len(x))],y_ppc,color=colors['IBM'], label="IBM Power 10", width=0.3)
+fig.legend(loc='lower center', shadow=True, fontsize='x-large', ncol=2)
 
 ax[1].set_title("MMA Usage")
 ax[1].set_ylabel("%")
-ax[1].bar(x,y_ppc_perf, color=colors['IBM'], width=0.3)
+ax[1].bar([value for value in range(len(x))],y_ppc_perf, color=colors['IBM'], width=0.3)
 ax[1].set_ylim(0,100)
-plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
-
-ax[2].set_title("Real time average")
-ax[2].set_ylabel("Nanoseconds(ns)")
-ax[2].plot(x,y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum")
-ax[2].plot(x,y_ppc_duration,color=colors['Intel'], label="IBM Power 10")
-
-ax[3].set_title("Items per second")
-ax[3].set_ylabel("Number of items per second")
-ax[3].plot(x,y_x86_items,color=colors['IBM'],label="Intel Xeon Platinum")
-ax[3].plot(x,y_ppc_items,color=colors['Intel'], label="IBM Power 10")
-
-
-plt.xticks([])
+ax[1].grid(color='#95a5a6', linestyle='--', linewidth=1, axis='y', alpha=0.6)
 plt.grid(False)
+
+ax[2].set_title("CPU time average")
+ax[2].set_ylabel("Nanoseconds(ns)")
+ax[2].bar([value for value in range(len(x))],y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
+ax[2].bar([value+.3 for value in range(len(x))],y_ppc_duration,color=colors['Intel'], label="IBM Power 10", width=0.3)
+
+ax[3].set_title("calcs/second")
+ax[3].set_ylabel("calcs/second")
+ax[3].bar([value for value in range(len(x))],y_x86_items,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
+ax[3].bar([value+.3 for value in range(len(x))],y_ppc_items,color=colors['Intel'], label="IBM Power 10", width=0.3)
+
+
+plt.xticks(np.arange(1,len(x)+1))
+#plt.grid(False)
 plt.show()
 
