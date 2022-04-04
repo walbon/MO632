@@ -238,7 +238,6 @@ y_ppc_ = \
 [((PROCESSED_ppc[value]['p0_power']+PROCESSED_ppc[value]['p1_power'])*PROCESSED_ppc[value]['real_time']*1e-9*PROCESSED_ppc[value]['iterations'])*100*(256/448)/PROCESSED_x86[value]['pkg_power'] for value in x ]
 print(f"Average of power usage between Ppc/x86: {np.average(y_ppc_)}")
 
-
 y_ppc_duration = [ PROCESSED_ppc[value]['cpu_time'] for value in x]
 y_x86_duration = [ PROCESSED_x86[value]['cpu_time'] for value in x ]
 
@@ -247,6 +246,12 @@ y_x86_items = [ PROCESSED_x86[value]['items_per_second'] for value in x ]
 
 y_ppc_perf = [ REPORTS_ppc[value]['value'] for value in x ]
 y_x86_perf = [ REPORTS_x86[value]['value'] for value in x ]
+
+counter = 1
+for v in x:
+    print(counter,v)
+    counter+=1
+
 
 fig,ax = plt.subplots(4,sharex=True)
 fig.subplots_adjust(hspace=.318)
@@ -258,26 +263,26 @@ fig.subplots_adjust(top=.952)
 
 ax[0].set_title("Consumption of energy of test set")
 ax[0].set_ylabel("Total Energy(Joules)")
-ax[0].bar([value    for value in range(len(x))],y_x86,color=colors['Intel'],label="Intel Xeon Platinum", width=0.3)
-ax[0].bar([value+.3 for value in range(len(x))],y_ppc,color=colors['IBM'], label="IBM Power 10", width=0.3)
+ax[0].bar([value    for value in range(1,len(x)+1)],y_x86,color=colors['Intel'],label="Intel Xeon Platinum", width=0.3)
+ax[0].bar([value+.3 for value in range(1,len(x)+1)],y_ppc,color=colors['IBM'], label="IBM Power 10", width=0.3)
 fig.legend(loc='lower center', shadow=True, fontsize='x-large', ncol=2)
 
 ax[1].set_title("MMA Usage")
 ax[1].set_ylabel("%")
-ax[1].bar([value for value in range(len(x))],y_ppc_perf, color=colors['IBM'], width=0.3)
+ax[1].bar([value for value in range(1,len(x)+1)],y_ppc_perf, color=colors['IBM'], width=0.3)
 ax[1].set_ylim(0,100)
 ax[1].grid(color='#95a5a6', linestyle='--', linewidth=1, axis='y', alpha=0.6)
 plt.grid(False)
 
 ax[2].set_title("CPU time average")
 ax[2].set_ylabel("Nanoseconds(ns)")
-ax[2].bar([value for value in range(len(x))],y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
-ax[2].bar([value+.3 for value in range(len(x))],y_ppc_duration,color=colors['Intel'], label="IBM Power 10", width=0.3)
+ax[2].bar([value for value in range(1,len(x)+1)],y_x86_duration,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
+ax[2].bar([value+.3 for value in range(1,len(x)+1)],y_ppc_duration,color=colors['Intel'], label="IBM Power 10", width=0.3)
 
 ax[3].set_title("calcs/second")
 ax[3].set_ylabel("calcs/second")
-ax[3].bar([value for value in range(len(x))],y_x86_items,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
-ax[3].bar([value+.3 for value in range(len(x))],y_ppc_items,color=colors['Intel'], label="IBM Power 10", width=0.3)
+ax[3].bar([value for value in range(1,len(x)+1)],y_x86_items,color=colors['IBM'],label="Intel Xeon Platinum", width=0.3)
+ax[3].bar([value+.3 for value in range(1,len(x)+1)],y_ppc_items,color=colors['Intel'], label="IBM Power 10", width=0.3)
 
 
 plt.xticks(np.arange(1,len(x)+1))
